@@ -19,7 +19,7 @@ def fibonacci(n):
 
 def lucas(n):
     """
-    returns the nth number from the lucas numbers series
+    Returns the nth number from the lucas numbers series
     """
     # Base values of the series
     if(n < 0):
@@ -47,4 +47,4 @@ def sum_series(n, first=0, second=1):
         return second
 
     #returns the sum of the previous two values in the series.
-    return sum_series(n-1) + sum_series(n-2)
+    return sum_series(n-1, first, second) + sum_series(n-2, first, second)
