@@ -50,7 +50,7 @@ for line in inputfile:
 # Total nucleotides seen so far.
 total_count = 0
 # Number of G and C nucleotides seen so far.
-gc_count = 0
+#gc_count = 0
 
 
 # for each base pair in the string,

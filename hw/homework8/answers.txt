@@ -17,11 +17,12 @@ Problem 1:
 
 Problem 2:
 
-...
+GC-content: 0.4302926296296296
 
 Problem 3:
 
-...
+part 1: The program fails and returns a name error as the variables that got commented out are both attempted to get called later on.
+part 2: A simular name error as "gc_count" which is called is never created when adding this comment.
 
 Problem 4:
 
