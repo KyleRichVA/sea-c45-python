@@ -53,8 +53,8 @@ moderate GC content
 
 Collaboration:
 
-...
+Completed on my own.
 
 Reflection:
 
-...
+Felt a litle overwhelmed going in not remember much DNA stuff from Biology, but everything went just fine working through the assignment. Was slighty annoyed the code given to me had intentional errors with the gc_content but understood it was to teach part of a lesson. My advise is to stick with the single loop that is already good to go. No need to run more loops than necessary.
