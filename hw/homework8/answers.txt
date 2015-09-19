@@ -26,7 +26,8 @@ part 2: A simular name error as "gc_count" which is called is never created when
 
 Problem 4:
 
-...
+GC-content: 0.4302926296296296
+AT-content: 0.5689938518518518
 
 Problem 5:
 
