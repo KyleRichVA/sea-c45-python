@@ -80,17 +80,25 @@ for bp in seq:
         Tcount = Tcount + 1
 
 
-# divide the gc_count and at_count by the total_count
-gc_content = float(gc_count) / total_count
-at_content = float(at_count) / total_count
+# divide the gc_count and at_count by the sum_count(sums of all nucleotide counts)
+sum_count = Acount+Ccount+Gcount+Tcount
+gc_content = float(gc_count) / sum_count
+at_content = float(at_count) / sum_count
 
-# Print the answer
+# Print relevent information on the sequence
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
+print('AT/GC Ratio:', at_count/gc_count)
+if(gc_content > .6):
+    print("high GC content")
+elif(gc_content < .4):
+    print("low GC content")
+else:
+    print("moderate GC content")
 print("A nucleotides:", Acount)
 print("C nucleotides:", Ccount)
 print("G nucleotides:", Gcount)
 print("T nucleotides:", Tcount)
-print("Sum count:", Acount+Ccount+Gcount+Tcount)
+print("Sum count:", sum_count)
 print("Total number of bps:", total_count)
 print("Length of the sequence:", len(seq))
