@@ -80,15 +80,15 @@ for bp in seq:
         Tcount = Tcount + 1
 
 
-# divide the gc_count and at_count by the sum_count(sums of all nucleotide counts)
-sum_count = Acount+Ccount+Gcount+Tcount
+# divide the gc_count and at_count by the sum_count(sums of all nucleotides)
+sum_count = Acount + Ccount + Gcount + Tcount
 gc_content = float(gc_count) / sum_count
 at_content = float(at_count) / sum_count
 
 # Print relevent information on the sequence
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
-print('AT/GC Ratio:', at_count/gc_count)
+print('AT/GC Ratio:', at_count / gc_count)
 if(gc_content > .6):
     print("high GC content")
 elif(gc_content < .4):
