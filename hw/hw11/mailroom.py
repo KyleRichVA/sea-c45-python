@@ -71,6 +71,16 @@ def thank_you():
     # return to starting prompt
     return
 
+
+def report():
+    """
+    Prints out a report of all donors to the terminal. Formatted and in order
+    by total donated ammount
+    """
+    # Top of report.
+    print(u"Name\t|  Total  | # |  Average")
+    print(u"-------------------------------------------------")
+    print(u"{}\t|  {}|  {}|  {}".format("Kyle","$200.00","5",str(200/5)))
+
 # TESTING
-thank_you()
-print(donors)
+report()
