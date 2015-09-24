@@ -18,7 +18,7 @@ donations and number of donations.
 example: donors["bill gates"] = [Total Donations, num Donations]
 '''
 
-donors = {}
+donors = {'kyle': [250, 5], 'bill': [500, 10], 'sam': [34, 2]}
 
 
 def thank_you():
@@ -77,10 +77,23 @@ def report():
     Prints out a report of all donors to the terminal. Formatted and in order
     by total donated ammount
     """
+    # create a temporary list of the donor's name sorted by donation total
+    donor_list = sorted(donors, key=lambda donor: donor[TOTAL_DONATED])
     # Top of report.
-    print(u"Name\t|  Total  | # |  Average")
+    print(u"  Name\t|  Total  | # |  Average")
     print(u"-------------------------------------------------")
-    print(u"{}\t|  {}|  {}|  {}".format("Kyle","$200.00","5",str(200/5)))
+    # prints out information for each donor.
+    for name in donor_list:
+        avg = float(donors[name][TOTAL_DONATED]) / float(donors[name]
+                                                         [NUM_DONATIONS])
+        print(u"{}\t|  {}\t|  {}|\t{}"
+              .format(name, donors[name][TOTAL_DONATED],
+                      donors[name][NUM_DONATIONS], avg))
+    print(u"Press Enter To Continue")
+    input(">")
+
+    # return to starting prompt
+    return
 
 # TESTING
 report()
