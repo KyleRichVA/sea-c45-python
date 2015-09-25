@@ -41,7 +41,7 @@ T nucleotides: 7661547
 
 Problem 6:
  
-The sum of the nucleotides does not match up with bp count and sequence count. The reason for this is that the letter N shows up in the sequences. It is counted into number of bps and the sequence length however it is not a part of the nucleotide sum. This did cause the GC/AT content to be incorrect.
+The sum of the nucleotides does not match up with bp count and sequence count. The reason for this is that the letter N shows up in the sequences. This seems to occur in all of the test files. It is counted into number of bps and the sequence length however it is not a part of the nucleotide sum. This did cause the GC/AT content to be incorrect. The demoninator should instead be the sum of the G,C,A,and T nucleotides.
 
 Problem 7:
 
