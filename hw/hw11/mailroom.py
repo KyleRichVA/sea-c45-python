@@ -18,7 +18,7 @@ donations and number of donations.
 example: donors["bill gates"] = [Total Donations, num Donations]
 '''
 
-donors = {'iygiygyghyfyfy': [250.90, 5], 'bill': [500.45, 10], 'sam': [34, 2]}
+donors = {'aygiygyghyfyfy': [250.90, 5], 'zack': [500.45, 10], 'sam': [34, 2]}
 
 
 def thank_you():
@@ -77,23 +77,37 @@ def report():
     Prints out a report of all donors to the terminal. Formatted and in order
     by total donated ammount
     """
-    # create a temporary list of the donor's name sorted by donation total
-    donor_list = sorted(donors, key=lambda donor: donor[TOTAL_DONATED])
+    # create a temporary tuple list of the donors sorted by donation total
+    donor_list = sorted(donors.items(),
+                        key=lambda donor: donor[1][TOTAL_DONATED],
+                        reverse=True)
     # Top of report.
     print(u"  Name\t|  Total  | # |  Average")
     print(u"-------------------------------------------------")
     # prints out information for each donor.
     for name in donor_list:
-        avg = float(donors[name][TOTAL_DONATED]) / float(donors[name]
-                                                         [NUM_DONATIONS])
+        avg = float(name[1][TOTAL_DONATED]) / float(name[1][NUM_DONATIONS])
         print(u"{}\t|  ${}|  {}|\t${}"
-              .format(name, donors[name][TOTAL_DONATED],
-                      donors[name][NUM_DONATIONS], avg))
+              .format(name[0], name[1][TOTAL_DONATED],
+                      name[1][NUM_DONATIONS], avg))
     print(u"Press Enter To Continue")
     input(">")
 
     # return to starting prompt
     return
 
-# TESTING
-report()
+# main interaction.
+if(__name__ == '__main__'):
+    command = ''
+    while(command.lower().strip() != 'quit'):
+        print(u"Welrcome to Mailroom Madness\n")
+        print(u"Choose from the following:\n")
+        print(u"T - Send a (T)hank You\n")
+        print(u"R - Create a (R)eport\n")
+        print(u"quit -  Quit the program\n")
+        command = input("> ")
+        if(command.upper().strip() == 'T'):
+            thank_you()
+        elif(command.upper().strip() == 'R'):
+            report()
+        # if input is quit the script should quit naturally.
