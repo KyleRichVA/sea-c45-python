@@ -18,7 +18,7 @@ donations and number of donations.
 example: donors["bill gates"] = [Total Donations, num Donations]
 '''
 
-donors = {'kyle': [250, 5], 'bill': [500, 10], 'sam': [34, 2]}
+donors = {'iygiygyghyfyfy': [250.90, 5], 'bill': [500.45, 10], 'sam': [34, 2]}
 
 
 def thank_you():
@@ -86,7 +86,7 @@ def report():
     for name in donor_list:
         avg = float(donors[name][TOTAL_DONATED]) / float(donors[name]
                                                          [NUM_DONATIONS])
-        print(u"{}\t|  {}\t|  {}|\t{}"
+        print(u"{}\t|  ${}|  {}|\t${}"
               .format(name, donors[name][TOTAL_DONATED],
                       donors[name][NUM_DONATIONS], avg))
     print(u"Press Enter To Continue")
