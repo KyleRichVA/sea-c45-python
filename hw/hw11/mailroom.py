@@ -18,7 +18,9 @@ donations and number of donations.
 example: donors["bill gates"] = [Total Donations, num Donations]
 '''
 
-donors = {'aygiygyghyfyfy': [250.90, 5], 'zack': [500.45, 10], 'sam': [34, 2]}
+donors = {'Big Boss': [250.90, 3], 'Tony Stark': [500.45, 1],
+          'Bruce Wayne': [34, 2], 'Scrooge McDuck': [750.34, 2],
+          'Kyle Richardson': [3.50, 1]}
 
 
 def thank_you():
@@ -100,7 +102,7 @@ def report():
 if(__name__ == '__main__'):
     command = ''
     while(command.lower().strip() != 'quit'):
-        print(u"Welrcome to Mailroom Madness\n")
+        print(u"Welcome to Mailroom Madness\n")
         print(u"Choose from the following:\n")
         print(u"T - Send a (T)hank You\n")
         print(u"R - Create a (R)eport\n")
