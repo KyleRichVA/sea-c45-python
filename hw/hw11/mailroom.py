@@ -68,8 +68,9 @@ def thank_you():
           .format(amount_input))
     print(u"Thank You,\n\nKyle Richardson\n\nThe Richardson Foundation"
           "\n\nPress Enter to Continue...\n")
-    input(">")
-
+    command = input(">")
+    if(command.lower() == 'quit'):
+        quit()
     # return to starting prompt
     return
 
