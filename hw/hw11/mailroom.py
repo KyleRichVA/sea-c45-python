@@ -80,7 +80,7 @@ def report():
     Prints out a report of all donors to the terminal. Formatted and in order
     by total donated ammount
     """
-    # create a temporary tuple list of the donors sorted by donation total
+    # create a temporary dictonary list of the donors sorted by donation total
     donor_list = sorted(donors.items(),
                         key=lambda donor: donor[1][TOTAL_DONATED],
                         reverse=True)
