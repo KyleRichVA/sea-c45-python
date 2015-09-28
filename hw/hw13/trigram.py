@@ -1,6 +1,6 @@
 import random
 # get the file used to create the trigram
-file = open("sherlock_small.txt", "r")
+file = open("mobydick.txt", "r")
 # take the text and store in memory line by line
 lines = []
 for line in file:
@@ -19,14 +19,22 @@ for i, word in enumerate(words):
         # otherwise create a new trigram for that sequence
         else:
             trigrams[(word, words[i + 1])] = [words[i + 2]]
-# start with a random trigram.
-start = ("as", "I")
+# the random starting trigram and printing for the text generation.
+start = random.choice(list(trigrams.keys()))
 print(start[0], start[1], trigrams[start][0], end=' ')
 nextKey = (start[1], trigrams[start][0])
 lastWord = start[1]
-while(nextKey in trigrams.keys()):
+# generates new text while the the last two words printed exist in the trigram
+wordsPrinted = 0
+wordLimit = random.randint(125, 201)
+# will stop generating new text after between 125 and 200 words have been made.
+while(nextKey in trigrams.keys() and wordsPrinted < wordLimit):
+    # used to select a random 3rd word from the trigram
     ran = random.choice(range(len(trigrams[nextKey])))
     newWord = trigrams[nextKey][ran]
     print(newWord, end=' ')
     lastWord = nextKey[1]
     nextKey = (lastWord, newWord)
+    wordsPrinted += 1
+# print a new line to look nice in the terminal
+print()
