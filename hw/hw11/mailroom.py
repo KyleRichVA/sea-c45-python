@@ -30,14 +30,20 @@ def thank_you():
     """
 
     # starting prompt for Thank You command
-    print(u"Please enter a name or choose from the following:")
-    print(u"list - Print a list of previous donors")
-    print(u"quit - Return to main menu")
-    name_input = input(u"> ")
-    # return to main menu if quit is entered
-    if(name_input.lower() == "quit"):
-        return
-    name_input = name_input.title()
+    while True:
+        print(u"Please enter a name or choose from the following:\n")
+        print(u"list - Print a list of previous donors\n")
+        print(u"quit - Return to main menu\n")
+        name_input = input(u"> ")
+        # return to main menu if quit is entered
+        if(name_input.lower() == "quit"):
+            return
+        # print out a list of previous donors
+        elif(name_input.lower() == "list"):
+            print(list(donors.keys()))
+        else:
+            name_input = name_input.title()
+            break
 
     print(u"Please enter a donation amount or 'quit':")
     # value validation
