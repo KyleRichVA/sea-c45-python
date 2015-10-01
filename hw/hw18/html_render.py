@@ -8,19 +8,45 @@ Python class example.
 # The start of it all:
 # Fill it all in here.
 
+# 4 Spaces used to make all indents easier
+INDENT = "    "
+
 
 class Element(object):
 
-    def __init__(self, name=""):
+    def __init__(self, name="", indent=""):
         self.name = name
         self.contains = []
-        self.indent = None
+        self.indent = indent
 
     def append(self, content):
         self.contains.append(content)
 
-    def render(self, file_out, indent=""):
-        file_out.write("<>\n")
+    def render(self, file_out):
+        file_out.write("{}<{}>\n".format(self.indent, self.name))
         for values in self.contains:
-            file_out.write("    " + values + "\n")
-        file_out.write("</>")
+            # If the content is another element render it
+            if(isinstance(values, Element)):
+                values.render(file_out)
+            else:  # Render out its contents
+                file_out.write(self.indent + INDENT + values + "\n")
+        file_out.write("{}</{}>\n".format(self.indent, self.name))
+
+
+class Html(Element):
+
+    def __init__(self):
+        Element.__init__(self, "html")
+
+
+class Body(Element):
+
+    def __init__(self):
+        Element.__init__(self, "body", INDENT)
+
+
+class P(Element):
+
+    def __init__(self, content):
+        Element.__init__(self, "p", INDENT * 2)
+        self.append(content)
