@@ -22,5 +22,5 @@ class Element(object):
     def render(self, file_out, indent=""):
         file_out.write("<>\n")
         for values in self.contains:
-            file_out.write("\t" + values + "\n")
+            file_out.write("    " + values + "\n")
         file_out.write("</>")
