@@ -13,7 +13,7 @@ NUM_DONATIONS = 1
 
 # custom thank you letter string.
 THANK_YOU = '''Dear {},
-We would like to thank you for your generous donation of {:,}
+We would like to thank you for your generous donation of {:,.2f}
 dollars to the Richardson Foundation. These funds will go a long
 way in the fight aganist Ice Wurm infections.
 
@@ -107,7 +107,7 @@ def report():
     # prints out information for each donor.
     for name in donor_list:
         avg = float(name[1][TOTAL_DONATED]) / float(name[1][NUM_DONATIONS])
-        print(u"{}\t|  ${:,}|  {:,}|\t${:,}"
+        print(u"{}\t|  ${:,.2f}|  {:,}|\t${:,.2f}"
               .format(name[0], name[1][TOTAL_DONATED],
                       name[1][NUM_DONATIONS], avg))
     print(u"Type 'Thank All' to send Thank You Letters to all Donors")
