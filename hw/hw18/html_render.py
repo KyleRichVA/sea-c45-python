@@ -39,10 +39,30 @@ class Html(Element):
         Element.__init__(self, "html")
 
 
+class Head(Element):
+
+    def __init__(self):
+        Element.__init__(self, "head", INDENT)
+
+
 class Body(Element):
 
     def __init__(self):
         Element.__init__(self, "body", INDENT)
+
+
+class OneLineTag(Element):
+
+    def render(self, file_out):
+        file_out.write("{s}<{n}>{c}</{n}>\n".format(s=self.indent, n=self.name,
+                                                    c=self.contains[0]))
+
+
+class Title(OneLineTag):
+
+    def __init__(self, content):
+        OneLineTag.__init__(self, "title", INDENT * 2)
+        self.contains.append(content)
 
 
 class P(Element):
