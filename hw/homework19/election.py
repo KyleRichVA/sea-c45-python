@@ -57,8 +57,17 @@ def most_recent_poll_row(poll_rows, pollster, state):
     Given a list of *PollDataRow*s, returns the most recent row with the
     specified *Pollster* and *State*. If no such row exists, returns None.
     """
-    #TODO: Implement this function
-    pass
+    most_recent = None
+    for row in poll_rows:
+        # make sure the row has the pollster and state.
+        if(row["State"] == state and row["Pollster"] == pollster):
+            # if the first valid row set it to most_recent
+            if(most_recent is None):
+                most_recent = row
+            else:
+                if earlier_date(most_recent["Date"], row["Date"]):
+                    most_recent = row
+    return most_recent
 
 
 ################################################################################
@@ -70,16 +79,27 @@ def unique_column_values(rows, column_name):
     Given a list of rows and the name of a column (a string),
     returns a set containing all values in that column.
     """
-    #TODO: Implement this function
-    pass
+    return [row[column_name] for row in rows]
 
 def pollster_predictions(poll_rows):
     """
     Given a list of *PollDataRow*s, returns *PollsterPredictions*.
     For a given pollster, uses only the most recent poll for a state.
     """
-    #TODO: Implement this function
-    pass
+    pollsters = unique_column_values(poll_rows, "Pollster")
+    states = unique_column_values(poll_rows, "State")
+    predictions = {}
+    for poller in pollsters:
+        for state in states:
+            most_recent = most_recent_poll_row(poll_rows,
+                                               poller, state)
+            if(most_recent is not None):
+                edge = row_to_edge(most_recent)
+                if(poller in predictions):
+                    predictions[poller][state] = edge
+                else:
+                    predictions[poller] = {state: edge}
+    return predictions
 
 
 ################################################################################
