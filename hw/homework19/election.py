@@ -79,7 +79,7 @@ def unique_column_values(rows, column_name):
     Given a list of rows and the name of a column (a string),
     returns a set containing all values in that column.
     """
-    return [row[column_name] for row in rows]
+    return {row[column_name] for row in rows}
 
 def pollster_predictions(poll_rows):
     """
