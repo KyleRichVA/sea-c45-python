@@ -70,6 +70,24 @@ class Title(OneLineTag):
         self.contains.append(content)
 
 
+class Hr(OneLineTag):
+
+    def __init__(self):
+        OneLineTag.__init__(self, indent=INDENT * 2)
+
+    def render(self, file_out):
+        file_out.write("{}<hr />\n".format(self.indent))
+
+
+class Br(OneLineTag):
+
+    def __init__(self):
+        OneLineTag.__init__(self, indent=INDENT * 2)
+
+    def render(self, file_out):
+        file_out.write("{i}<br />\n".format(self.indent))
+
+
 class P(Element):
 
     def __init__(self, content, **atributes):
