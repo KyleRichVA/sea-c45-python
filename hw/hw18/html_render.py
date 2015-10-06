@@ -34,7 +34,7 @@ class Element(object):
             if(isinstance(values, Element)):
                 values.render(file_out)
             else:  # Render out its contents
-                file_out.write(self.indent + INDENT + values + "\n")
+                file_out.write("{}{}{}\n".format(self.indent, INDENT, values))
         file_out.write("{}</{}>\n".format(self.indent, self.name))
 
 
@@ -93,3 +93,14 @@ class P(Element):
     def __init__(self, content, **atributes):
         Element.__init__(self, "p", INDENT * 2, **atributes)
         self.append(content)
+
+
+class A(Element):
+
+    def __init__(self, url, text):
+        self.url = url
+        self.text = text
+
+    def render(self, file_out):
+        file_out.write('{}<a href="{}">{}</a>\n'.format(INDENT * 2,
+                                                       self.url, self.text))
