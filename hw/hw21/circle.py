@@ -29,6 +29,13 @@ class Circle(object):
         rad2 = c.radius
         return Circle(rad1 + rad2)
 
+    def __mul__(self, x):
+        """Returns a new circle with a radius the product
+        of the radius of self and value x
+        example: Circle(2) * 4 = Circle(8)
+        """
+        return Circle(self.radius * x)
+
     def _getd(self):
         return self._D
 
