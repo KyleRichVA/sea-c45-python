@@ -14,16 +14,21 @@ INDENT = "    "
 
 class Element(object):
 
-    def __init__(self, name="", indent=""):
+    def __init__(self, name="", indent="", **atributes):
         self.name = name
         self.contains = []
         self.indent = indent
+        self.atributes = atributes
 
     def append(self, content):
         self.contains.append(content)
 
     def render(self, file_out):
-        file_out.write("{}<{}>\n".format(self.indent, self.name))
+        file_out.write("{}<{}".format(self.indent, self.name))
+        if(self.atributes):  # if we have atributes to add on to the tag.
+            for atribute, value in self.atributes.items():
+                file_out.write(" {}={}".format(atribute, value))
+        file_out.write(">\n")
         for values in self.contains:
             # If the content is another element render it
             if(isinstance(values, Element)):
@@ -67,6 +72,6 @@ class Title(OneLineTag):
 
 class P(Element):
 
-    def __init__(self, content):
-        Element.__init__(self, "p", INDENT * 2)
+    def __init__(self, content, **atributes):
+        Element.__init__(self, "p", INDENT * 2, **atributes)
         self.append(content)
