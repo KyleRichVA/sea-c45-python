@@ -4,21 +4,33 @@ Style Story Using Trigrams.
 """
 
 import random
-# get the file used to create the trigram
-file = open("mobydick.txt", "r")
-# take the text and store in memory line by line
-lines = []
-for line in file:
-    lines.append(file.readline())
-file.close()
 
-# Used to store individual words and trigrams.
-words = []
+
+def readLines(f):
+    """take the text in 'f' and stores in memory line by line
+    then closes the file.
+    """
+    text = open(f, "r")
+    lines = text.readlines()
+    text.close()
+    return lines
+
+
+def getWords(lines):
+    """goes through each line and splits it up into individual words
+    """
+    words = []
+    for line in lines:
+        words += line.replace('--', ' ').replace('\n', '').split(' ')
+    return words
+
+# open the file and store all of the lines.
+lines = readLines("mobydick.txt")
+
+# get all of the words in the text and set up the trigram.
+words = getWords(lines)
 trigrams = {}
 
-# Go through each line and split it up into indivdual words
-for line in lines:
-    words += line.replace('--', ' ').replace('\n', '').split(' ')
 # Go through each word and set up a trigram (word, nextword): wordafternextword
 for i, word in enumerate(words):
     # if are able to get 3 words without a index out of range.
