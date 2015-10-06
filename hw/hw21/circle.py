@@ -36,6 +36,25 @@ class Circle(object):
         """
         return Circle(self.radius * x)
 
+    # rich comparison methods which compare based on the circle's radius.
+    def __lt__(self, c):
+        return self.radius < c.radius
+
+    def __le__(self, c):
+        return self. radius <= c.radius
+
+    def __eq__(self, c):
+        return self. radius == c.radius
+
+    def __ne__(self, c):
+        return self. radius != c.radius
+
+    def __gt__(self, c):
+        return self. radius > c.radius
+
+    def __ge__(self, c):
+        return self. radius >= c.radius
+
     def _getd(self):
         return self._D
 
