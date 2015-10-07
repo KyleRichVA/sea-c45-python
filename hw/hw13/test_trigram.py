@@ -11,3 +11,10 @@ def test_get_words():
     expected = ["hey", "everyone", "these", "are", "words"]
     words = trigram.getWords(lines)
     assert words == expected
+
+
+def test_create_trigram():
+    words = ['these', 'are', 'some', 'words']
+    expected = {('these', 'are'): ['some'], ('are', 'some'): ['words']}
+    tri = trigram.createTrigram(words)
+    assert tri == expected

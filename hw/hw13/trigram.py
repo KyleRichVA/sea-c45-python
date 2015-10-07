@@ -24,23 +24,29 @@ def getWords(lines):
         words += line.replace('--', ' ').replace('\n', '').split(' ')
     return words
 
+
+def createTrigram(words):
+    """Creates a trigram dictionary based off the list 'words'
+    """
+    trigrams = {}
+    # Go through each word and set up a trigram (word, nextword): nexterword
+    for i, word in enumerate(words):
+        # if are able to get 3 words without a index out of range.
+        if(i + 1 in range(len(words)) and i + 2 in range(len(words))):
+            # if a two word sequence already appeared.
+            if((word, words[i + 1]) in trigrams.keys()):
+                trigrams[(word, words[i + 1])].append(words[i + 2])
+            # otherwise create a new trigram for that sequence
+            else:
+                trigrams[(word, words[i + 1])] = [words[i + 2]]
+    return trigrams
+
 # open the file and store all of the lines.
 lines = readLines("mobydick.txt")
 
 # get all of the words in the text and set up the trigram.
 words = getWords(lines)
-trigrams = {}
-
-# Go through each word and set up a trigram (word, nextword): wordafternextword
-for i, word in enumerate(words):
-    # if are able to get 3 words without a index out of range.
-    if(i + 1 in range(len(words)) and i + 2 in range(len(words))):
-        # if a two word sequence already appeared.
-        if((word, words[i + 1]) in trigrams.keys()):
-            trigrams[(word, words[i + 1])].append(words[i + 2])
-        # otherwise create a new trigram for that sequence
-        else:
-            trigrams[(word, words[i + 1])] = [words[i + 2]]
+trigrams = createTrigram(words)
 
 # the random starting trigram and printing for the text generation.
 start = random.choice(list(trigrams.keys()))
