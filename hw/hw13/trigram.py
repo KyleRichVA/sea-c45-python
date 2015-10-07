@@ -41,31 +41,38 @@ def createTrigram(words):
                 trigrams[(word, words[i + 1])] = [words[i + 2]]
     return trigrams
 
+
+def generateText(trigrams):
+    # the random starting trigram and printing for the text generation.
+    start = random.choice(list(trigrams.keys()))
+    print(start[0], start[1], trigrams[start][0], end=' ')
+    # set up the next trigram key
+    nextKey = (start[1], trigrams[start][0])
+    lastWord = start[1]
+    wordsPrinted = 0
+    wordLimit = random.randint(125, 201)
+    """
+    generates new text while the the last two words
+    printed exist in the trigram
+    will stop generating new text after between 125 and 200
+    words have been made.
+    """
+    while(nextKey in trigrams.keys() and wordsPrinted < wordLimit):
+        # used to select a random 3rd word from the trigram
+        newWord = random.choice(trigrams[nextKey])
+        print(newWord, end=' ')
+        # set up the next trigram
+        lastWord = nextKey[1]
+        nextKey = (lastWord, newWord)
+        wordsPrinted += 1
+    # print a new line to look nice in the terminal
+    print()
+
 # open the file and store all of the lines.
 lines = readLines("mobydick.txt")
 
 # get all of the words in the text and set up the trigram.
 words = getWords(lines)
 trigrams = createTrigram(words)
-
-# the random starting trigram and printing for the text generation.
-start = random.choice(list(trigrams.keys()))
-print(start[0], start[1], trigrams[start][0], end=' ')
-# set up the next trigram key
-nextKey = (start[1], trigrams[start][0])
-lastWord = start[1]
-# generates new text while the the last two words printed exist in the trigram
-wordsPrinted = 0
-wordLimit = random.randint(125, 201)
-# will stop generating new text after between 125 and 200 words have been made.
-while(nextKey in trigrams.keys() and wordsPrinted < wordLimit):
-    # used to select a random 3rd word from the trigram
-    ran = random.choice(range(len(trigrams[nextKey])))
-    newWord = trigrams[nextKey][ran]
-    print(newWord, end=' ')
-    # set up the next trigram
-    lastWord = nextKey[1]
-    nextKey = (lastWord, newWord)
-    wordsPrinted += 1
-# print a new line to look nice in the terminal
-print()
+# genearate and print the text
+generateText(trigrams)

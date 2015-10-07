@@ -18,3 +18,8 @@ def test_create_trigram():
     expected = {('these', 'are'): ['some'], ('are', 'some'): ['words']}
     tri = trigram.createTrigram(words)
     assert tri == expected
+
+
+def test_generate_text():
+    test_trigram = {('these', 'are'): ['some'], ('are', 'some'): ['words']}
+    trigram.generateText(test_trigram)
