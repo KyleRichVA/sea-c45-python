@@ -152,8 +152,18 @@ def pivot_nested_dict(nested_dict):
                 'x': {'a': 1, 'b': 3},
                 'z': {'b': 4} }
     """
-     #TODO: Implement this function
-    pass
+    new_dict = {}
+    for key1 in nested_dict:
+        originalkey = key1
+        for key2 in nested_dict[key1]:
+            newKey = key2
+            if newKey in new_dict:
+                new_dict[newKey][originalkey] = nested_dict[key1][key2]
+            else:
+                new_dict[newKey] = {originalkey: nested_dict[key1][key2]}
+    return new_dict
+
+
 
 
 ################################################################################
