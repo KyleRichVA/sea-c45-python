@@ -112,21 +112,25 @@ def average_error(state_edges_predicted, state_edges_actual):
     the average error of the prediction.
     """
     tot = 0
-    numPredict = 0
+    numpredict = 0
     for key in state_edges_predicted:
         # if the edges in actual compare the two and add to a sum
         if key in state_edges_actual:
             tot += abs(state_edges_predicted[key] - state_edges_actual[key])
-            numPredict += 1
-    return tot / numPredict
+            numpredict += 1
+    return tot / numpredict
+
 
 def pollster_errors(pollster_predictions, state_edges_actual):
     """
     Given *PollsterPredictions* and actual *StateEdges*,
     retuns *PollsterErrors*.
     """
-    #TODO: Implement this function
-    pass
+    error = {}
+    for pollster in pollster_predictions:
+        error[pollster] = average_error(pollster_predictions[pollster],
+                                        state_edges_actual)
+    return error
 
 
 ################################################################################
